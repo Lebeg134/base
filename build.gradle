@@ -4,7 +4,7 @@ plugins {
 subprojects { subproject ->
   apply plugin: 'java'
   apply plugin: 'org.sonarqube'
-
+  apply plugin: 'jacoco'
 
   repositories {
     jcenter()
@@ -13,6 +13,9 @@ subprojects { subproject ->
 
   dependencies {
     implementation 'com.google.guava:guava:23.5-jre'
+    testImplementation "org.mockito:mockito-core:3.+"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
   }
 }
 

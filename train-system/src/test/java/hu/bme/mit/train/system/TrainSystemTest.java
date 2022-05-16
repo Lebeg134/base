@@ -2,8 +2,6 @@ package hu.bme.mit.train.system;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.sun.corba.se.impl.orbutil.graph.Graph;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +9,9 @@ import org.junit.Test;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
-import hu.bme.mit.train.system.TrainSystem;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class TrainSystemTest {
 
@@ -63,8 +60,15 @@ public class TrainSystemTest {
 	}
 	@Test
 	public void TestGuava(){
-		List<String> val = Lists.newArrayList("a", null, "b", "c");
-		val = (List<String>)Iterables.filter(val, Predicates.notNull());
-		Assert.assertEquals(3, val.size());
+		List<String> val = new ArrayList<>();
+		val.add("a");
+		val.add("b");
+		val.add(null);
+		val.add("c");
+		int i = 0;
+		for (String v :Iterables.filter(val, Predicates.notNull())){
+			i++;
+		}
+		Assert.assertEquals(3, i);
 	}
 }
