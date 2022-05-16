@@ -13,6 +13,7 @@ import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -63,8 +64,15 @@ public class TrainSystemTest {
 	}
 	@Test
 	public void TestGuava(){
-		List<String> val = Lists.newArrayList("a", null, "b", "c");
-		val = (List<String>)Iterables.filter(val, Predicates.notNull());
-		Assert.assertEquals(3, val.size());
+		List<String> val = new ArrayList<>();
+		val.add("a");
+		val.add("b");
+		val.add(null);
+		val.add("c");
+		int i = 0;
+		for (String v :Iterables.filter(val, Predicates.notNull())){
+			i++;
+		}
+		Assert.assertEquals(3, i);
 	}
 }
